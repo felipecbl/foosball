@@ -80,15 +80,15 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 	// Order the files
 	//for development only
-  // return gulp.src(['src/js/vendor/*.js', 'src/js/*.js'])
-  return gulp.src(['src/js/vendor/*.js'])
-    .pipe(sourcemaps.init())
-    // Name the final file
-    .pipe(concat('foos.js'))
-    // Uglify with mangle: change variable names
+  	// return gulp.src(['src/js/vendor/*.js', 'src/js/*.js'])
+	return gulp.src(['src/js/vendor/*.js'])
+	.pipe(sourcemaps.init())
+	// Name the final file
+	.pipe(concat('foos.js'))
+	// Uglify with mangle: change variable names
 	// .pipe(uglify({mangle: true}))
 	// Set the destination of the sourcemap file
-    .pipe(sourcemaps.write('../js', {addComment: true}))
-    // Set the final file destination
-    .pipe(gulp.dest(devDir + '/js'));
+	.pipe(sourcemaps.write('../js', {addComment: true}))
+	// Set the final file destination
+	.pipe(gulp.dest(devDir + '/js'));
 });
