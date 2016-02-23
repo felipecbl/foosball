@@ -1,0 +1,52 @@
+html
+	head
+		title Foos Table
+		link(rel="stylesheet", href="css/main.css")
+	body
+		div.container
+			//- h1 Foos Buyatab
+			div.players-info.full
+				div.adding-players.third
+					textarea(name="players-input", placeholder="Enter players name (coma separated)")#players-input
+					a.button#add-button(href="#") add players
+
+				div.view-players.two-thirds
+					div.players-list.half
+						h2 Added Players
+						ul
+							//- li(data-playerid='1') player 1
+							//- li(data-playerid='2') player 2
+							//- li(data-playerid='3') player 3
+							//- li(data-playerid='4') player 4
+							//- li(data-playerid='5') player 5
+							//- li(data-playerid='6') player 6
+							//- li(data-playerid='7') player 7
+							//- li(data-playerid='8') player 8
+							//- li(data-playerid='9') player 9
+							//- li(data-playerid='10') player 10
+
+					div.options.half
+						h2 Options
+						div.option-field
+							label(for="championship-name") Championship name
+							input(type='text')#championship-name
+
+						div.option-field
+							label(for="games") Games
+							input(type='number', min="1", value="1")#games
+
+						//- div.option-field
+							//- input(type="checkbox")#force
+							//- label(for="force") Force ofence/defense
+
+						div.option-field
+							input(type="checkbox")#matrix
+							label(for="matrix") Matrix championship
+
+						div.option-field.nav
+							a.button#generate(href="#") generate table
+
+			div.players-table.full
+
+		script(src="js/foos.js")
+		script(src="../../src/js/main.js")

@@ -1,0 +1,24 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "compass/css3/images";
+@import "compass/css3/background-size";
+
+
+body{
+
+}
+
+.container{
+	float: left;
+	display: block;
+	position: relative;
+	width: 100%;
+	border: 1px solid #3E98D4;
+}
+
+.button{
+	background: #3E98D4;
+	padding: 10px 30px;
+	color: #fff;
+}

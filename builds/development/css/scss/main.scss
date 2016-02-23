@@ -1,0 +1,269 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "compass/css3/images";
+@import "compass/css3/background-size";
+
+/* Font Awesome */
+@import "icons/font-awesome";
+
+@import "mixins";
+
+$cIndex: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$colors: #468966, #c9de55, #fff0a5, #ffb03b, #ff8598, #b64926, #8e2800, #92cdcf, #35478c, #52656b;
+
+body{
+	color: #666;
+	font-family: helvetica, arial;
+	font-size: 18px;
+}
+
+.container{
+	@include border-box;
+	@include fdp;
+	// border: 1px dashed #3E98D4;
+	display: table;
+	float: none;
+	margin: 20px auto;
+	padding: 40px;
+	width: 1200px;
+
+}
+
+.button{
+	@include fdp;
+	background: #3E98D4;
+	color: #fff;
+	float: right;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 30px;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+h1{
+	@include fdp;
+	color: #3374A1;
+	font-family: helvetica, arial;
+	font-size: 50px;
+	text-align: center;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+h2{
+	@include fdp;
+	// color: #3374A1;
+	font-family: helvetica, arial;
+	font-size: 22px;
+	// text-align: center;
+	margin: 0 0 10px;
+	width: 100%;
+}
+
+textarea{
+	@include border-box;
+	resize: none;
+	height: 100px;
+	margin: 0 0 20px;
+	width: 100%;
+	color: #666;
+	font-family: helvetica, arial;
+	font-size: 18px;
+	padding: 10px;
+}
+
+
+.full{
+	@include border-box;
+	@include fdp;
+	// float: none;
+	width: 100%;
+}
+
+.half{
+	@include border-box;
+	@include fdp;
+	// float: none;
+	width: 50%;
+
+	&+.half{
+		@include calc(width, "50% - 20px");
+		margin-left: 20px;
+	}
+}
+
+.third{
+	@include border-box;
+	@include fdp;
+	// float: none;
+	width: 33%;
+}
+
+.two-thirds{
+	@include border-box;
+	@include fdp;
+	@include calc(width, "66% - 40px");
+	margin-left: 40px;
+}
+
+.players-info{
+	@include border-box;
+	@include fdp;
+	margin: 0 0 50px;
+	width: 100%;
+
+}
+
+.view-players{
+
+	.players-list{
+		@include border-box;
+		@include fdp;
+
+		ul{
+			@include fdp;
+			width: 100%;
+
+			li{
+				@include border-box;
+				counter-increment: step-counter;
+				height: 40px;
+				line-height: 40px;
+				margin-bottom: 5px;
+				padding: 0 10px;
+				vertical-align: middle;
+
+				&:before{
+					@include txt-shadow(#333 0px 0px 2px);
+					@include width-height(30px, 30px);
+					background-color: #3E98D4;
+					border-radius: 30px;
+					color: white;
+					content: counter(step-counter);
+					display: inline-block;
+					line-height: 34px;
+					margin-right: 8px;
+					position: relative;
+					text-align: center;
+					vertical-align: middle;
+
+				}
+
+				@for $i from 1 through length($colors) {
+
+					&[data-playerid="#{nth($cIndex, $i)}"] {
+
+						&:before{
+							background-color: nth($colors, $i);
+						}
+					}
+				}
+
+				i{
+					display: none;
+					float: right;
+					height: 40px;
+					line-height: 40px;
+					vertical-align: middle;
+					cursor: pointer;
+				}
+
+				&:hover{
+					background: rgba(0, 0, 0, 0.05);
+
+					i{
+						display: block;
+					}
+				}
+
+			}
+		}
+	}
+
+	.options{
+		@include border-box;
+		@include fdp;
+		@include rounded(4);
+		border: 1px solid #ccc;
+		padding: 20px;
+
+		.option-field{
+			@include border-box;
+			@include fdp;
+			margin: 10px 0;
+			width: 100%;
+		}
+	}
+}
+
+.players-table{
+	@include fdp;
+	@include border-box;
+	width: 100%;
+
+	.round{
+		@include fdp;
+		@include border-box;
+		border: 1px dashed #ccc;
+		padding: 20px;
+		margin: 10px;
+		width: 353px;
+
+		h2{
+			text-align: center;
+		}
+
+		li{
+			@include fdp;
+			margin: 5px 0;
+			width: 100%;
+
+			> div{
+				@include fdp;
+				height: 40px;
+				line-height: 40px;
+				margin: 0 20px;
+				vertical-align: middle;
+
+			}
+
+			a{
+				@include fdp;
+				@include width-height(40, 40);
+				@include rounded(40px);
+				@include txt-shadow(#333 0px 0px 2px);
+				background-color: #3E98D4;
+				color: white;
+				line-height: 40px;
+				margin: 0 5px 0 0;
+				text-align: center;
+				vertical-align: middle;
+
+				// &:hover{
+					text-decoration: none;
+				// }
+
+				@for $i from 1 through length($colors) {
+
+					&[data-playerid="#{nth($cIndex, $i)}"] {
+
+						background-color: nth($colors, $i);
+					}
+				}
+			}
+		}
+	}
+}
+
+input[type=number], input[type=text]{
+	@include fdp;
+	font-size: 18px;
+	height: 46px;
+	line-height: 46px;
+	margin: 10px 0 5px;
+	padding: 0 10px;
+	vertical-align: middle;
+	width: 100%;
+}
