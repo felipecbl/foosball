@@ -79,7 +79,9 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
 	// Order the files
-  return gulp.src(['src/js/vendor/*.js'/*, 'src/js/*.js'*/])
+	//for development only
+  // return gulp.src(['src/js/vendor/*.js', 'src/js/*.js'])
+  return gulp.src(['src/js/vendor/*.js'])
     .pipe(sourcemaps.init())
     // Name the final file
     .pipe(concat('foos.js'))
