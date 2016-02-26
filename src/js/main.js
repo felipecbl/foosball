@@ -46,12 +46,13 @@ var Match = function(id, homeTeam, awayTeam){
 };
 
 // Championship
-var Championship = function(id, name, type, matches){
-    this.id         = id;
-    this.name       = name;
-    this.type       = type;
-    this.matches    = matches;
-    this.date       = Date.now();
+var Championship = function(id, name, type, tournamentType, matches){
+    this.id                 = id;
+    this.name               = name;
+    this.type               = type;
+    this.tournamentType     = tournamentType;
+    this.matches            = matches;
+    this.date               = Date.now();
 };
 
 

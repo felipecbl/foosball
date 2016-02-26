@@ -8,7 +8,7 @@ html
 			div.players-info.full
 				div.adding-players.third
 					textarea(name="players-input", placeholder="Enter players name (coma separated)")#players-input
-					a.button#add-button(href="#") add players
+					a.button#add-button(href="#") add/shufle players
 
 				div.view-players.two-thirds
 					div.players-list.half
@@ -40,8 +40,8 @@ html
 							//- label(for="force") Force ofence/defense
 
 						div.option-field
-							input(type="checkbox")#matrix
-							label(for="matrix") Matrix championship
+							input(type="checkbox", checked="checked")#matrix
+							label(for="matrix") Mixed doubles
 
 						div.option-field.nav
 							a.button#generate(href="#") generate table

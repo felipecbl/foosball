@@ -1,0 +1,100 @@
+// Database tables
+
+account:{
+	"id": 54820,
+	"name": "Buyatab League",
+	"email": "foos@buyatab.com",
+	"password": "lkjhg56fgfa",
+	"date": 1456453071333 		// UTC
+
+}
+
+championship:{
+	"id": 18,
+	"name": "Mixed Doubles Championship",
+	"account": 54820,  			// account user ID
+	"status": 0,   				// *0 = just created | 1 = in progress | 2 = finished
+	"type": 1,					// 0 = sigle | 1 = mixed doubles** | 2 = teams
+	"tournamentType": 0,		// 0 = Round Robin | 1 = Knock Out*** ...
+	"date": 1456453071333 		// UTC
+}
+
+// *   a championship shouldn't start until the preview championship is finished
+// **  mixed doubles: all players plays with and against all players and the position (defense/offense) is suggested
+// *** knock outs may not be compatible for all types of playersType
+
+players:{
+	"id": 549,
+	"name": "Felipe",
+	"account": 54820,
+	"type": 0, 					// 0 = player* | 1 = team
+	"avatar": "2342345.png",	// file name inside specific folder. that would be nice, eh?
+
+	////// Relative table??? /////
+	"championshipId": 18, 		// current championship ID
+	"curentId": 1, 				// current ID for current championship (from 1 to players.length). we don't wanna display ids like '345' on the front end
+	"currentPlayed": 7,
+	"currentVictories": 4,
+	"currentBalance": 13,
+	//////////////////////////////
+
+	"totalPlayed": 45,			// total of all championships played
+	"totalVictories": 25,		// total of all championships played
+	"totalBalance": 66,			// total of all championships played
+	"totalChampionships": 6,	// total of all championships played
+	"date": 1456453071333 		// UTC
+
+}
+
+// * when choosing players the system needs to generate the doubles and then the matches.
+
+doubles:{
+	"id": 52,
+	"account": 54820,			// necessary?
+	"championshipId": 18, 		// current championship ID
+	// "curentId": 1,
+	"defensePlayer": 551,  		// player championship ID?
+	"offensePlayer": 549  		// player championship ID?
+}
+
+matches: {
+	"id": 5502,
+	"account": 54820,			// necessary?
+	"championshipId": 18, 		// current championship ID
+	"homeTeam": 52,
+	"awayTeam": 69,
+	"played": false,
+	"winner": 0					 // 0 = none | 1 = home team | 2 = away team
+}
+
+flow:{
+	"settings": ["name", "email", "password", "players/teams"],
+	"championship history": ["current tournament stats", "list of preview tournaments and respective winners" ],
+	"create tournament":{ // this option won't be available when a tournament is running.
+		"type": {
+			"single": {
+				"add players": {
+					"tournament type": {
+						"round robin": "every player plays every player",
+						"knock out": "elimination"
+					}
+				},
+			},
+			"double": {
+				"mixed doubles": { // all players will play with and against all the other players. the position (defense/offense) will be suggested.
+					"add players":{
+						"tournament type": "knock out" // generate the doubles and matches
+					}
+				},
+				"teams": {
+					"add teams":{
+						"tournament type": {
+							"round robin": "every team plays every team",
+							"knock out": "elimination"
+						}
+					}
+				}
+			}
+		}
+	}
+}
