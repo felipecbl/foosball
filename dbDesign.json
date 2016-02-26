@@ -1,3 +1,37 @@
+// foosBoss flow
+
+foosBoss.com:{
+	"settings": ["name", "email", "password", "players/teams"],
+	"championship history": ["current tournament stats", "list of preview tournaments and respective winners" ],
+	"create tournament":{ // this option won't be available when a tournament is running.
+		"type": {
+			"single": { // one player versus one player
+				"add players": {
+					"tournament type": {
+						"round robin": "every player plays every player",
+						"knock out": "elimination"
+					}
+				},
+			},
+			"double": { // two players versus two players
+				"mixed doubles": { // all players will play with and against all the other players. the position (defense/offense) will be suggested.
+					"add players":{
+						"tournament type": "knock out" // generate the doubles and matches
+					}
+				},
+				"teams": {
+					"add teams":{
+						"tournament type": {
+							"round robin": "every team plays every team",
+							"knock out": "elimination"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // Database tables
 
 account:{
@@ -65,36 +99,4 @@ matches: {
 	"awayTeam": 69,
 	"played": false,
 	"winner": 0					 // 0 = none | 1 = home team | 2 = away team
-}
-
-flow:{
-	"settings": ["name", "email", "password", "players/teams"],
-	"championship history": ["current tournament stats", "list of preview tournaments and respective winners" ],
-	"create tournament":{ // this option won't be available when a tournament is running.
-		"type": {
-			"single": {
-				"add players": {
-					"tournament type": {
-						"round robin": "every player plays every player",
-						"knock out": "elimination"
-					}
-				},
-			},
-			"double": {
-				"mixed doubles": { // all players will play with and against all the other players. the position (defense/offense) will be suggested.
-					"add players":{
-						"tournament type": "knock out" // generate the doubles and matches
-					}
-				},
-				"teams": {
-					"add teams":{
-						"tournament type": {
-							"round robin": "every team plays every team",
-							"knock out": "elimination"
-						}
-					}
-				}
-			}
-		}
-	}
 }
